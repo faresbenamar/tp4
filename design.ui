@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>850</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Computer Vision TP</string>
+  </property>
+
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+
+    <!-- Bouton Charger -->
+    <item row="0" column="0">
+     <widget class="QPushButton" name="browseBtn">
+      <property name="text">
+       <string>Parcourir</string>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Dimensions -->
+    <item row="0" column="1">
+     <widget class="QTextBrowser" name="textBrowser"/>
+    </item>
+
+    <!-- Image originale -->
+    <item row="1" column="0" colspan="2">
+     <widget class="QLabel" name="originalImg">
+      <property name="minimumSize">
+       <size>
+        <width>400</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Canaux -->
+    <item row="2" column="0">
+     <widget class="QLabel" name="rchan">
+      <property name="minimumSize">
+       <size><width>250</width><height>200</height></size>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+
+    <item row="2" column="1">
+     <widget class="QLabel" name="gchan">
+      <property name="minimumSize">
+       <size><width>250</width><height>200</height></size>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+
+    <item row="2" column="2">
+     <widget class="QLabel" name="bchan">
+      <property name="minimumSize">
+       <size><width>250</width><height>200</height></size>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Boutons Canaux -->
+    <item row="3" column="0">
+     <widget class="QPushButton" name="displayRChan">
+      <property name="text">
+       <string>Afficher Rouge</string>
+      </property>
+     </widget>
+    </item>
+
+    <item row="3" column="1">
+     <widget class="QPushButton" name="displayGChan">
+      <property name="text">
+       <string>Afficher Vert</string>
+      </property>
+     </widget>
+    </item>
+
+    <item row="3" column="2">
+     <widget class="QPushButton" name="displayBChan">
+      <property name="text">
+       <string>Afficher Bleu</string>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Histogramme couleur -->
+    <item row="4" column="0" colspan="2">
+     <widget class="QLabel" name="Hist">
+      <property name="minimumSize">
+       <size><width>400</width><height>250</height></size>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+
+    <item row="5" column="0">
+     <widget class="QPushButton" name="showHist">
+      <property name="text">
+       <string>Afficher Histogramme Couleur</string>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Image Grise -->
+    <item row="4" column="2">
+     <widget class="QLabel" name="grayImg">
+      <property name="minimumSize">
+       <size><width>300</width><height>250</height></size>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+
+    <item row="5" column="2">
+     <widget class="QPushButton" name="DisplayGrayImg">
+      <property name="text">
+       <string>Valider</string>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Histogramme Gris -->
+    <item row="6" column="0" colspan="2">
+     <widget class="QLabel" name="grayHist">
+      <property name="minimumSize">
+       <size><width>400</width><height>250</height></size>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+
+    <item row="6" column="2">
+     <widget class="QPushButton" name="DisplayGrayHist">
+      <property name="text">
+       <string>Afficher Histogramme Gris</string>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Contraste -->
+    <item row="7" column="0">
+     <widget class="QLineEdit" name="contrast">
+      <property name="placeholderText">
+       <string>Contraste (alpha)</string>
+      </property>
+     </widget>
+    </item>
+
+    <!-- Luminosité -->
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="brightness">
+      <property name="placeholderText">
+       <string>Brillance (beta)</string>
+      </property>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+
+  <resources/>
+  <connections/>
+ </widget>
+</ui>
