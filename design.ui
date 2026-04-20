@@ -3,190 +3,373 @@
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1200</width>
-    <height>850</height>
-   </rect>
+   <rect><x>0</x><y>0</y><width>900</width><height>820</height></rect>
   </property>
   <property name="windowTitle">
-   <string>Computer Vision TP</string>
+   <string>MainWindow</string>
   </property>
-
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QVBoxLayout" name="vl_root">
+    <property name="spacing"><number>6</number></property>
+    
 
-    <!-- Bouton Charger -->
-    <item row="0" column="0">
-     <widget class="QPushButton" name="browseBtn">
-      <property name="text">
-       <string>Parcourir</string>
-      </property>
+    <!-- ═══════════════  AUDIO GROUP  ═══════════════ -->
+    <item>
+     <widget class="QGroupBox" name="groupBox_audio">
+      <property name="title"><string>Traitement du son numérique</string></property>
+      <layout class="QVBoxLayout" name="vl_audio">
+       <property name="spacing"><number>4</number></property>
+
+       <!-- Analyse du signal audio -->
+       <item>
+        <widget class="QGroupBox" name="groupBox_analyse_audio">
+         <property name="title"><string>Analyse du signal audio</string></property>
+         <layout class="QHBoxLayout" name="hl_analyse_audio">
+          <property name="spacing"><number>6</number></property>
+
+          <item>
+           <layout class="QVBoxLayout">
+            <item>
+             <widget class="QPushButton" name="btn_load_wav">
+              <property name="text"><string>Charger le fichier .wav</string></property>
+              <property name="maximumWidth"><number>160</number></property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation"><enum>Qt::Vertical</enum></property>
+              <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="lbl_title_audio_features">
+              <property name="text"><string>Caractéristiques</string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="audio_features">
+              <property name="minimumSize"><size><width>160</width><height>80</height></size></property>
+              <property name="frameShape"><enum>QFrame::Box</enum></property>
+              <property name="text"><string></string></property>
+              <property name="alignment"><set>Qt::AlignTop|Qt::AlignLeft</set></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="lbl_title_signal_temporel">
+              <property name="text"><string>Signal temporel</string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_signal_temporel">
+              <property name="minimumSize"><size><width>420</width><height>80</height></size></property>
+              <property name="frameShape"><enum>QFrame::Box</enum></property>
+              <property name="text"><string></string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+
+         </layout>
+        </widget>
+       </item>
+
+       <!-- Échantillonnage -->
+       <item>
+        <widget class="QGroupBox" name="groupBox_echantillonnage">
+         <property name="title"><string>Échantillonnage</string></property>
+         <layout class="QHBoxLayout" name="hl_ech">
+          <property name="spacing"><number>6</number></property>
+
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QRadioButton" name="radio_fe2">
+              <property name="text"><string>Fe / 2</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radio_fe4">
+              <property name="text"><string>Fe / 4</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radio_fe8">
+              <property name="text"><string>Fe / 8</string></property>
+              <property name="checked"><bool>true</bool></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_validate_resample">
+              <property name="text"><string>Valider</string></property>
+              <property name="maximumWidth"><number>100</number></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="lbl_title_ech">
+              <property name="text"><string>Signal échantillonné</string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_signal_echantillonne">
+              <property name="minimumSize"><size><width>600</width><height>80</height></size></property>
+              <property name="frameShape"><enum>QFrame::Box</enum></property>
+              <property name="text"><string></string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+
+         </layout>
+        </widget>
+       </item>
+
+       <!-- Compression audio -->
+       <item>
+        <widget class="QGroupBox" name="groupBox_compression_audio">
+         <property name="title"><string>Compression</string></property>
+         <layout class="QHBoxLayout" name="hl_comp_audio">
+          <property name="spacing"><number>6</number></property>
+
+          <item>
+           <layout class="QVBoxLayout">
+            <item>
+             <widget class="QPushButton" name="btn_compress_audio">
+              <property name="text"><string>Compresser</string></property>
+              <property name="maximumWidth"><number>120</number></property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation"><enum>Qt::Vertical</enum></property>
+              <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="lbl_title_spectre">
+              <property name="text"><string>Spectre du signal</string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_spectre">
+              <property name="minimumSize"><size><width>600</width><height>80</height></size></property>
+              <property name="frameShape"><enum>QFrame::Box</enum></property>
+              <property name="text"><string></string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+
+         </layout>
+        </widget>
+       </item>
+
+      </layout>
      </widget>
     </item>
 
-    <!-- Dimensions -->
-    <item row="0" column="1">
-     <widget class="QTextBrowser" name="textBrowser"/>
-    </item>
+    <!-- ═══════════════  VIDEO GROUP  ═══════════════ -->
+    <item>
+     <widget class="QGroupBox" name="groupBox_video">
+      <property name="title"><string>Traitement de la vidéo numérique</string></property>
+      <layout class="QVBoxLayout" name="vl_video">
+       <property name="spacing"><number>4</number></property>
 
-    <!-- Image originale -->
-    <item row="1" column="0" colspan="2">
-     <widget class="QLabel" name="originalImg">
-      <property name="minimumSize">
-       <size>
-        <width>400</width>
-        <height>300</height>
-       </size>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
+       <!-- Analyse de vidéo -->
+       <item>
+        <widget class="QGroupBox" name="groupBox_analyse_video">
+         <property name="title"><string>Analyse de vidéo</string></property>
+         <layout class="QHBoxLayout" name="hl_analyse_video">
+          <property name="spacing"><number>6</number></property>
 
-    <!-- Canaux -->
-    <item row="2" column="0">
-     <widget class="QLabel" name="rchan">
-      <property name="minimumSize">
-       <size><width>250</width><height>200</height></size>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
+          <item>
+           <layout class="QVBoxLayout">
+            <item>
+             <widget class="QPushButton" name="btn_load_video">
+              <property name="text"><string>Charger la vidéo .avi</string></property>
+              <property name="maximumWidth"><number>160</number></property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation"><enum>Qt::Vertical</enum></property>
+              <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
 
-    <item row="2" column="1">
-     <widget class="QLabel" name="gchan">
-      <property name="minimumSize">
-       <size><width>250</width><height>200</height></size>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="lbl_title_video_features">
+              <property name="text"><string>Caractéristiques</string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="video_features">
+              <property name="minimumSize"><size><width>160</width><height>90</height></size></property>
+              <property name="frameShape"><enum>QFrame::Box</enum></property>
+              <property name="text"><string></string></property>
+              <property name="alignment"><set>Qt::AlignTop|Qt::AlignLeft</set></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
 
-    <item row="2" column="2">
-     <widget class="QLabel" name="bchan">
-      <property name="minimumSize">
-       <size><width>250</width><height>200</height></size>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="lbl_title_video_preview">
+              <property name="text"><string>Aperçu vidéo (trames)</string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_video_preview">
+              <property name="minimumSize"><size><width>420</width><height>120</height></size></property>
+              <property name="frameShape"><enum>QFrame::Box</enum></property>
+              <property name="text"><string></string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
 
-    <!-- Boutons Canaux -->
-    <item row="3" column="0">
-     <widget class="QPushButton" name="displayRChan">
-      <property name="text">
-       <string>Afficher Rouge</string>
-      </property>
-     </widget>
-    </item>
+         </layout>
+        </widget>
+       </item>
 
-    <item row="3" column="1">
-     <widget class="QPushButton" name="displayGChan">
-      <property name="text">
-       <string>Afficher Vert</string>
-      </property>
-     </widget>
-    </item>
+       <!-- Compression vidéo -->
+       <item>
+        <widget class="QGroupBox" name="groupBox_compression_video">
+         <property name="title"><string>Compression</string></property>
+         <layout class="QHBoxLayout" name="hl_comp_video">
+          <property name="spacing"><number>10</number></property>
 
-    <item row="3" column="2">
-     <widget class="QPushButton" name="displayBChan">
-      <property name="text">
-       <string>Afficher Bleu</string>
-      </property>
-     </widget>
-    </item>
+          <item>
+           <layout class="QGridLayout" name="grid_video">
+            <property name="spacing"><number>4</number></property>
 
-    <!-- Histogramme couleur -->
-    <item row="4" column="0" colspan="2">
-     <widget class="QLabel" name="Hist">
-      <property name="minimumSize">
-       <size><width>400</width><height>250</height></size>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
+            <item row="0" column="0">
+             <widget class="QLabel"><property name="text"><string>FPS</string></property></widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="input_fps">
+              <property name="text"><string></string></property>
+              <property name="maximumWidth"><number>70</number></property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel"><property name="text"><string>Codec</string></property></widget>
+            </item>
+            <item row="0" column="3" rowspan="3">
+             <widget class="QListWidget" name="list_codec">
+              <property name="maximumSize"><size><width>80</width><height>70</height></size></property>
+              <item><property name="text"><string>mp4v</string></property></item>
+              <item><property name="text"><string>MJPG</string></property></item>
+              <item><property name="text"><string>XVID</string></property></item>
+             </widget>
+            </item>
 
-    <item row="5" column="0">
-     <widget class="QPushButton" name="showHist">
-      <property name="text">
-       <string>Afficher Histogramme Couleur</string>
-      </property>
-     </widget>
-    </item>
+            <item row="1" column="0">
+             <widget class="QLabel"><property name="text"><string>Width</string></property></widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="input_width">
+              <property name="text"><string></string></property>
+              <property name="maximumWidth"><number>70</number></property>
+             </widget>
+            </item>
 
-    <!-- Image Grise -->
-    <item row="4" column="2">
-     <widget class="QLabel" name="grayImg">
-      <property name="minimumSize">
-       <size><width>300</width><height>250</height></size>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
+            <item row="2" column="0">
+             <widget class="QLabel"><property name="text"><string>Height</string></property></widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="input_height">
+              <property name="text"><string></string></property>
+              <property name="maximumWidth"><number>70</number></property>
+             </widget>
+            </item>
 
-    <item row="5" column="2">
-     <widget class="QPushButton" name="DisplayGrayImg">
-      <property name="text">
-       <string>Valider</string>
-      </property>
-     </widget>
-    </item>
+            <item row="3" column="0" colspan="4">
+             <widget class="QPushButton" name="btn_compress_video">
+              <property name="text"><string>Compresser</string></property>
+             </widget>
+            </item>
 
-    <!-- Histogramme Gris -->
-    <item row="6" column="0" colspan="2">
-     <widget class="QLabel" name="grayHist">
-      <property name="minimumSize">
-       <size><width>400</width><height>250</height></size>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
+           </layout>
+          </item>
 
-    <item row="6" column="2">
-     <widget class="QPushButton" name="DisplayGrayHist">
-      <property name="text">
-       <string>Afficher Histogramme Gris</string>
-      </property>
-     </widget>
-    </item>
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="lbl_title_video_results">
+              <property name="text"><string>Caractéristiques après compression</string></property>
+              <property name="alignment"><set>Qt::AlignCenter</set></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="video_results">
+              <property name="minimumSize"><size><width>420</width><height>100</height></size></property>
+              <property name="frameShape"><enum>QFrame::Box</enum></property>
+              <property name="text"><string></string></property>
+              <property name="alignment"><set>Qt::AlignTop|Qt::AlignLeft</set></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
 
-    <!-- Contraste -->
-    <item row="7" column="0">
-     <widget class="QLineEdit" name="contrast">
-      <property name="placeholderText">
-       <string>Contraste (alpha)</string>
-      </property>
-     </widget>
-    </item>
+         </layout>
+        </widget>
+       </item>
 
-    <!-- Luminosité -->
-    <item row="7" column="1">
-     <widget class="QLineEdit" name="brightness">
-      <property name="placeholderText">
-       <string>Brillance (beta)</string>
-      </property>
+      </layout>
      </widget>
     </item>
 
    </layout>
   </widget>
-
-  <resources/>
-  <connections/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>22</height></rect></property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <resources/>
+ <connections/>
 </ui>
